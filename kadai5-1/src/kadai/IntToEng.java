@@ -18,14 +18,16 @@ public class IntToEng {
 		
 		StringBuilder sb = new StringBuilder();
 		if((n/100)>0){
-			sb.append(num[n/100]+" hundred");
+			sb.append(num[n/100]+" hundred ");
 			n%=100;
 		}
 		if((n/10)>0){
 			if((n/10)==1)sb.append(num2[n%10]);
-			else sb.append(" "+num3[n/10-2]+" "+num[n%10]);
+			else if(n%10 != 0) sb.append(num3[n/10-2]+" "+num[n%10]+" ");
+			else sb.append(num3[n/10-2]);
 		}
-		if((sb.length() == 0 ) || (n/10==0)) sb.append(" "+num[n%10]);
+		if(sb.length() == 0) sb.append(num[n%10]);
+		else if(n/10 == 0 && n%10 != 0 ) sb.append(num[n%10]);
 		return new String(sb);
     }
 }
