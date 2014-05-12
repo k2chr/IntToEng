@@ -12,10 +12,20 @@ public class IntToEng {
         
 	}
 	static String translateEng(int n) {
-		String num[] = {"one","two","threr","four","five","six","seven","eight","nine"};
+		String num[] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
 		String num2[] = {"ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
-		String num3[] = {"twnty","thirty","fourty","fifty","sixty","seventy","eighty","ninety"};
+		String num3[] = {"twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninety"};
 		
-        return "";
+		StringBuilder sb = new StringBuilder();
+		if((n/100)>0){
+			sb.append(num[n/100]+" hundred");
+			n%=100;
+		}
+		if((n/10)>0){
+			if((n/10)==1)sb.append(num2[n%10]);
+			else sb.append(" "+num3[n/10-2]+" "+num[n%10]);
+		}
+		if((sb.length() == 0 ) || (n/10==0)) sb.append(" "+num[n%10]);
+		return new String(sb);
     }
 }
