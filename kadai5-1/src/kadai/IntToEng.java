@@ -12,20 +12,22 @@ public class IntToEng {
         
 	}
 	static String translateEng(int n) {
-		 String num[] ={"billion ","million " ,"thousand "};
-		 String str = "";
-		 int i=1000000000;
-		 int j=0;
+		
+		if(n==0) return "zero";
+		String num[] ={"billion ","million " ,"thousand "};
+		String str = "";
+		int i=1000000000;
+		int j=0;
 		 	
-		 while(i>=1000){
-			 if(n/i > 0){
-				 str += (eng100(n/i)+" "+num[j]);
-			 }
-			 n%=i;
-			 j++;
-			 i /= 1000;
-			 }
-		 str += eng100(n);
+		while(i>=1000){
+			if(n/i > 0){
+				str += (eng100(n/i)+" "+num[j]);
+			}
+			n%=i;
+			j++;
+			i /= 1000;
+		}
+		if(n!=0)str += eng100(n); //n%=i‚É‚æ‚Á‚Ä—]‚è‚ª0‚Ì‚Æ‚«‚Ézero‚ª’Ç‰Á‚³‚ê‚é‚Ì‚ð–h‚®
 		return str;
     }
 	public static String eng100(int n) {
@@ -41,11 +43,11 @@ public class IntToEng {
 			n%=100;
 		}
 		if((n/10)>0){
-			if((n/10)==1)sb.append(num2[n%10]);
+			if((n/10)==1)sb.append(num2[n%10]); //10~19
 			else if(n%10 != 0) sb.append(num3[n/10-2]+" "+num1[n%10]+" ");
 			else sb.append(num3[n/10-2]);
 		}
-		if(sb.length() == 0) sb.append(num1[n%10]);
+		if(sb.length() == 0) sb.append(num1[n%10]); //n‚ªˆêŒ…‚Ì‚Æ‚«
 		else if(n/10 == 0 && n%10 != 0 ) sb.append(num1[n%10]);
 		return new String(sb);
 	}

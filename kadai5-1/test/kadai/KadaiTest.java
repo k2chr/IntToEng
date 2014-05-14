@@ -74,9 +74,27 @@ public class KadaiTest {
 		String actual = IntToEng.translateEng(2060);
 		assertThat(actual,is(expected));
 	}
-	@Test(expected = IllegalArgumentException.class)
+	/*@Test(expected = IllegalArgumentException.class)
 	public void tlanslateEngで10000以上が入力されたときIllegalArgumentExceptionを送出する() {
 		IntToEng.translateEng(10000);
+	}*/
+	@Test
+	public void tlanslateEngで10000をテストする(){
+		String expected = ("ten thousand ");
+		String actual = IntToEng.translateEng(10000);
+		assertThat(actual,is(expected));
+	}
+	@Test
+	public void tlanslateEngで100010をテストする(){
+		String expected = ("one hundred  thousand ten");
+		String actual = IntToEng.translateEng(100010);
+		assertThat(actual,is(expected));
+	}
+	@Test
+	public void tlanslateEngで123456789をテストする(){
+		String expected = ("one hundred twenty three  million four hundred fifty six  thousand seven hundred eighty nine ");
+		String actual = IntToEng.translateEng(123456789);
+		assertThat(actual,is(expected));
 	}
 }
 	
