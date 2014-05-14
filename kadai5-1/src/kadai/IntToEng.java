@@ -16,7 +16,13 @@ public class IntToEng {
 		String num2[] = {"ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
 		String num3[] = {"twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninety"};
 		
+		if(n >= 10000) throw new IllegalArgumentException("–|–ó‚Å‚«‚é‚Ì‚Í9999‚Ü‚Å‚Å‚·");
+		
 		StringBuilder sb = new StringBuilder();
+		if(n/1000 > 0){
+			sb.append(num[n/1000]+" thousand ");
+			n%=1000;
+		}
 		if((n/100)>0){
 			sb.append(num[n/100]+" hundred ");
 			n%=100;
